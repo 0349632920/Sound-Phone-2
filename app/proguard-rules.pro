@@ -1,0 +1,4 @@
+-keep class io.socket.** { *; }
+-keep class org.json.** { *; }
+-dontwarn io.socket.**
+-dontwarn org.json.**
