@@ -13,6 +13,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ⭐ BƯỚC DEBUG: Xem repo có gì
+      - name: Debug - Liệt kê files
+        run: |
+          echo "=== Cấu trúc thư mục ==="
+          find . -maxdepth 3 -type f -name "*.kts" -o -name "*.xml" -o -name "*.properties" | sort
+          echo ""
+          echo "=== Kiểm tra settings.gradle.kts ==="
+          if [ -f settings.gradle.kts ]; then
+            echo "✅ Có settings.gradle.kts"
+            cat settings.gradle.kts
+          else
+            echo "❌ THIẾU settings.gradle.kts"
+          fi
+          echo ""
+          echo "=== Kiểm tra build.gradle.kts root ==="
+          if [ -f build.gradle.kts ]; then
+            echo "✅ Có build.gradle.kts"
+            cat build.gradle.kts
+          else
+            echo "❌ THIẾU build.gradle.kts"
+          fi
+
       - name: Setup JDK 17
         uses: actions/setup-java@v4
         with:
